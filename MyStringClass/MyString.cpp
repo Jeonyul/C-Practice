@@ -20,7 +20,16 @@ MyString::MyString(const char str[])
 	{
 		mStr[i] = str[i];
 	}
-	mStr[length + 1] = NULL;
+	mStr[length] = NULL;
+}
+MyString::MyString(int length, char ch)
+{
+	mStr = new char[length + 1];
+	for (int i = 0; i < length; i++)
+	{
+		mStr[i] = ch;
+	}
+	mStr[length] = NULL;
 }
 MyString::MyString(const MyString& str)
 	: mStr{ nullptr }, mLength{ 0 }
@@ -30,10 +39,26 @@ MyString::MyString(const MyString& str)
 	{
 		mStr[i] = str.mStr[i];
 	}
-	mStr[str.mLength + 1] = NULL;
+	mStr[str.mLength] = NULL;
 	mLength = str.mLength;
 }
-char& MyString::operator[](const int index)
+MyString::~MyString()
+{
+	delete mStr;
+}
+//int MyString::FindFirstOccur(const char str[])
+//{
+//	for (int i = 0; i < mLength; i++)
+//	{
+//		
+//	}
+//	return;
+//}
+//int MyString::FindFromIndex(const char str[], int index)
+//{
+//	return;
+//}
+char& MyString::operator[](const unsigned int index)
 {
 	return *(mStr + index);
 }
@@ -45,15 +70,39 @@ MyString& MyString::operator=(const MyString& str)
 	{
 		mStr[i] = str.mStr[i];
 	}
-	mStr[str.mLength + 1] = NULL;
+	mStr[str.mLength] = NULL;
 	mLength = str.mLength;
+	return *this;
+}
+MyString& MyString::operator+=(const MyString& str)
+{
+	int tempLength = mLength + str.mLength;
+	char* pTempStr = new char[tempLength + 1];
+	for (int i = 0; i < mLength; i++)
+	{
+		*(pTempStr + i) = mStr[i];
+	}
+	int i = 0;
+	for (int j = mLength; j < tempLength; j++)
+	{
+		pTempStr[j] = str.mStr[i];
+		i++;
+	}
+	pTempStr[tempLength] = NULL;
+	delete mStr;
+	mStr = pTempStr;
+	pTempStr = nullptr;
+	mLength = tempLength;
 	return *this;
 }
 ostream& operator<<(ostream& os, MyString& str)
 {
-	for (int i = 0; str.mStr[i] != NULL; i++)
+	if (str.mLength > 0)
 	{
-		os << str.mStr[i];
+		for (int i = 0; str.mStr[i] != NULL; i++)
+		{
+			os << str.mStr[i];
+		}
 	}
 	return os;
 }
