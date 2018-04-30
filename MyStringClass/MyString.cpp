@@ -63,33 +63,16 @@ int MyString::FindFirstOccur(const char* str) const
 	int targetIndex = -1;
 	if (!myStr.IsEmpty())
 	{
-		int i = 0;
-		while (i < mLength)
+		for (int i = 0; i < mLength - myStr.GetLength() + 1; i++)
 		{
 			int j = 0;
-			int equalCount = 0;
-			while (mStr[i] == myStr.mStr[j])
+			while (j < myStr.GetLength() && mStr[i + j] == myStr.mStr[j])
 			{
-				if (j == 0)
+				if (j == myStr.GetLength() - 1)
 				{
-					targetIndex = i;
+					return i;
 				}
-				equalCount++;
-				if (equalCount == myStr.GetLength())
-				{
-					return targetIndex;
-				}
-				i++;
 				j++;
-
-			}
-			if (equalCount == 0)
-			{
-				i++;
-			}
-			else
-			{
-				continue;
 			}
 		}
 	}
