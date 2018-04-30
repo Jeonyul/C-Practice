@@ -1,5 +1,4 @@
 #include "MyString.h"
-
 MyString::MyString()
 	: mStr{ nullptr }, mLength{ 0 }
 {
@@ -17,8 +16,8 @@ MyString::MyString(const char str[])
 		i++;
 	}
 	mLength = length;
-	mStr = new char[length + 1];
-	for (int i = 0; i < length; i++)
+	mStr = new char[mLength + 1];
+	for (int i = 0; i < mLength; i++)
 	{
 		mStr[i] = str[i];
 	}
@@ -47,7 +46,7 @@ MyString::MyString(const MyString& str)
 }
 MyString::~MyString()
 {
-	delete mStr;
+	delete[] mStr;
 }
 bool MyString::IsEmpty() const
 {
