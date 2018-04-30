@@ -3,6 +3,8 @@
 MyString::MyString()
 	: mStr{ nullptr }, mLength{ 0 }
 {
+	mStr = new char[1];
+	mStr[0] = NULL;
 }
 MyString::MyString(const char str[])
 	: mStr{ nullptr }, mLength{ 0 }
@@ -22,6 +24,7 @@ MyString::MyString(const char str[])
 	}
 	mStr[length] = NULL;
 }
+
 MyString::MyString(int length, char ch)
 {
 	mStr = new char[length + 1];
@@ -48,7 +51,7 @@ MyString::~MyString()
 }
 bool MyString::IsEmpty() const
 {
-	if (mStr == nullptr)
+	if (mStr[0] == NULL)
 	{
 		return true;
 	}
@@ -75,8 +78,12 @@ int MyString::FindFirstOccur(const char* str) const
 				j++;
 			}
 		}
+		return -1;
 	}
-	return -1;
+	else
+	{
+		return 0;
+	}
 }
 //int MyString::FindFromIndex(const char str[], int index)
 //{
