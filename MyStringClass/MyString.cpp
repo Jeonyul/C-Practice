@@ -46,14 +46,55 @@ MyString::~MyString()
 {
 	delete mStr;
 }
-//int MyString::FindFirstOccur(const char str[])
-//{
-//	for (int i = 0; i < mLength; i++)
-//	{
-//		
-//	}
-//	return;
-//}
+bool MyString::IsEmpty() const
+{
+	if (mStr == nullptr)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+int MyString::FindFirstOccur(const char* str) const
+{
+	MyString myStr(str);
+	int targetIndex = -1;
+	if (!myStr.IsEmpty())
+	{
+		int i = 0;
+		while (i < mLength)
+		{
+			int j = 0;
+			int equalCount = 0;
+			while (mStr[i] == myStr.mStr[j])
+			{
+				if (j == 0)
+				{
+					targetIndex = i;
+				}
+				equalCount++;
+				if (equalCount == myStr.GetLength())
+				{
+					return targetIndex;
+				}
+				i++;
+				j++;
+
+			}
+			if (equalCount == 0)
+			{
+				i++;
+			}
+			else
+			{
+				continue;
+			}
+		}
+	}
+	return -1;
+}
 //int MyString::FindFromIndex(const char str[], int index)
 //{
 //	return;

@@ -9,13 +9,15 @@ public:
 	MyString();
 	MyString(const char str[]);
 	MyString(int length, char ch);
-	MyString(const MyString& str);
+	MyString(const MyString& myStr);
 	~MyString();
 
 	int GetLength() { return mLength; }
-	int FindFirstOccur(const char str[]);
+	bool IsEmpty() const;
+	int FindFirstOccur(const char* str) const;
 	int FindFromIndex(const char str[], int index);
 	
+
 	char& operator[](const unsigned int index);
 	MyString& operator=(const MyString& str);
 	MyString& operator+=(const MyString& str);
