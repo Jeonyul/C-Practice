@@ -94,7 +94,6 @@ int CGameOmokDlg::ScanX(int type)
 	}
 	return FALSE;
 }
-
 // 세로 줄 확인
 int CGameOmokDlg::ScanY(int type)
 {
@@ -122,7 +121,6 @@ int CGameOmokDlg::ScanY(int type)
 	}
 	return FALSE;
 }
-
 // 백슬래시 방향 대각선
 int CGameOmokDlg::ScanBackslashDiagonal(int type, int x, int y)
 {
@@ -167,7 +165,6 @@ int CGameOmokDlg::ScanBackslashDiagonal(int type, int x, int y)
 		tempY--;
 	}
 }
-
 // 슬래시 방향 대각선
 int CGameOmokDlg::ScanSlashDiagonal(int type, int x, int y)
 {
