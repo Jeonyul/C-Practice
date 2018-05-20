@@ -84,7 +84,7 @@ ostream& operator<<(ostream& os, Card& c)
 	{
 		os << 'X' << 'X';
 	}*/
-	const char RANKS[] = { '0', 'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K' };
+	const string RANKS[] = { "0", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
 	const char SUITS[] = { 'c', 'd', 'h', 's' };
 	if (c.mbIsFaceUp)
 	{
