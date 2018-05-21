@@ -13,8 +13,8 @@
 입력 형식
 입력은 그림의 크기를 나타내는 m과 n,
 그리고 그림을 나타내는 m × n 크기의 2차원 배열 picture로 주어진다.
-제한조건은 아래와 같다.
 
+제한조건은 아래와 같다.
 1 <= m, n <= 100
 picture의 원소는 0 이상 2^31 - 1 이하의 임의의 값이다.
 picture의 원소 중 값이 0인 경우는 색칠하지 않는 영역을 뜻한다.
@@ -75,6 +75,7 @@ vector<int> solution(int m, int n, vector<vector<int>> picture) {
 	answer[1] = max_size_of_one_area;
 	return answer;
 }
+
 int main()
 {
 	vector<vector<int>> picture;
