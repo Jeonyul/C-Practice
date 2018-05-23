@@ -1,1 +1,1 @@
-# Practices in C++
+# Practice in C++
